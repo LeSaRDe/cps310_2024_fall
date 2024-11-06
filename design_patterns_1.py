@@ -9,7 +9,6 @@ In this file, we start with the most straightforward design of this platform, an
 """
 
 
-
 """
 Platform Code
 """
@@ -217,7 +216,10 @@ class ZombieGame:
             cls.__g_game_instance = super().__new__(cls)
         return cls.__g_game_instance
 
-    def __initialize_agents(self):
+    def __initialize_agents(self) -> None:
+        """
+        [private]
+        """
         for i in range(10):
             self.__m_agents.append(Human())
         for i in range(10):
@@ -226,6 +228,7 @@ class ZombieGame:
 
     def run(self):
         """
+        [public]
         Run the game.
         """
         self.__initialize_agents()
@@ -234,7 +237,6 @@ class ZombieGame:
             selected_neighbor = random.choice(self.__m_agents)
             if selected_neighbor.get_type() == AgentType.HUMAN:
                 self.__m_agents[-1].interact(selected_neighbor)
-
 
 
 if __name__ == '__main__':
